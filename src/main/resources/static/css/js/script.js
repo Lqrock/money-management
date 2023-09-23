@@ -13,7 +13,7 @@ function getTransaction(){
 
 function getTransactionID(x) {
     let row = x.rowIndex;
-    let col = 0; 
+    let col = 0;
     let Cell = document.getElementById('dtHorizontalExample').rows[row].cells;
     var id = Cell[col].innerHTML;
     document.getElementById("transactionId").value=id;
