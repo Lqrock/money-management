@@ -5,7 +5,7 @@ $(document).ready(function () {
   $('.dataTables_length').addClass('bs-select');
 });
 
-// THIS IS IN MASTER BRANCH
+// THIS IS IN TEMP BRANCH
 
 function getTransaction(){
     var id = accommodationId.value;
