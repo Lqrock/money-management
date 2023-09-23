@@ -5,7 +5,9 @@ $(document).ready(function () {
   $('.dataTables_length').addClass('bs-select');
 });
 
-// THIS IS IN TEMP BRANCH
+// DADADADADA
+// CHANGES TO TEMP BRANCH
+// LOLOLOL ASDASDASDA
 
 function getTransaction(){
     var id = accommodationId.value;
