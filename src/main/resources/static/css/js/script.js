@@ -5,13 +5,7 @@ $(document).ready(function () {
   $('.dataTables_length').addClass('bs-select');
 });
 
-<<<<<<< HEAD
 // THIS IS IN MASTER ASDASD
-=======
-// DADADADADA
-// CHANGES TO TEMP BRANCH
-// LOLOLOL ASDASDASDA
->>>>>>> temp
 
 function getTransaction(){
     var id = accommodationId.value;
