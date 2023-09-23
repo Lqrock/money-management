@@ -5,7 +5,7 @@ $(document).ready(function () {
   $('.dataTables_length').addClass('bs-select');
 });
 
-// THIS IS IN MASTER
+// THIS IS IN MASTER ASDASD
 
 function getTransaction(){
     var id = accommodationId.value;
