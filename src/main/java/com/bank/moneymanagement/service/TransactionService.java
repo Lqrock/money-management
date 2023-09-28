@@ -5,10 +5,12 @@ import com.bank.moneymanagement.model.Transaction;
 import com.bank.moneymanagement.repository.TransactionRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class TransactionService implements TransactionServiceInterface {
@@ -24,17 +26,10 @@ public class TransactionService implements TransactionServiceInterface {
 
         int previousBalance = previousTransaction.getBalance();
         int amount = transaction.getAmount();
-        System.out.println("CURRENT BALANCE: " + amount);
         if (transaction.getOperation() == Operation.WITHDRAW) {
-            System.out.println("WITHDRAWING!!!");
-            System.out.println(previousBalance);
             transaction.setBalance(previousBalance - amount);
-            System.out.println(transaction.getBalance());
         } else if (transaction.getOperation() == Operation.DEPOSIT) {
-            System.out.println("DEPOSITING!!!");
-            System.out.println(previousBalance);
             transaction.setBalance(previousBalance + amount);
-            System.out.println(amount);
         }
         transactionRepository.save(transaction);
 
@@ -57,8 +52,18 @@ public class TransactionService implements TransactionServiceInterface {
         return transactionRepository.findById(transactionId);
     }
 
+    public List<Transaction> getTransactionsByIdBetween(int from, int to) {
+        return transactionRepository.findByIdBetween(from, to, Sort.by(Sort.Direction.ASC, "id"));
+    }
+
     @Override
     public List<Transaction> getAllTransaction() {
-        return transactionRepository.findAll();
+        return transactionRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
+
+    @Override
+    public List<Transaction> getTransactionsByDateBetween(LocalDate from, LocalDate to) {
+        return transactionRepository.findByDateBetween(from, to, Sort.by(Sort.Direction.ASC, "id"));
+    }
+
 }
