@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -40,14 +39,14 @@ public class TransactionController {
     @GetMapping("/delete/{transactionId}")
     public String deleteTransaction(@PathVariable int transactionId, Model model) {
         transactionService.deleteTransaction(transactionId);
-        List<Transaction> transactions = transactionService.getAllTransaction();
+        List<Transaction> transactions = transactionService.getAllTransactions();
         model.addAttribute("transactions", transactions);
         return "show-all-transactions";
     }
 
     @GetMapping("/get-all")
     public String getAllTransactions(Model model) {
-        List<Transaction> transactions = transactionService.getAllTransaction();
+        List<Transaction> transactions = transactionService.getAllTransactions();
         model.addAttribute("transactions", transactions);
         return "show-all-transactions";
     }

@@ -14,6 +14,7 @@ import java.util.List;
 
 @Service
 public class TransactionService implements TransactionServiceInterface {
+
     @Autowired
     TransactionRepository transactionRepository;
 
@@ -57,7 +58,7 @@ public class TransactionService implements TransactionServiceInterface {
     }
 
     @Override
-    public List<Transaction> getAllTransaction() {
+    public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
@@ -65,5 +66,6 @@ public class TransactionService implements TransactionServiceInterface {
     public List<Transaction> getTransactionsByDateBetween(LocalDate from, LocalDate to) {
         return transactionRepository.findByDateBetween(from, to, Sort.by(Sort.Direction.ASC, "id"));
     }
+
 
 }
