@@ -1,6 +1,5 @@
 package com.bank.moneymanagement.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,8 +8,8 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "transaction")
-public class Transaction {
+@Table(name = "ansar")
+public class Ansar extends Bank{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +34,7 @@ public class Transaction {
 
     @Column(name = "balance")
     private int balance;
+
+    @Column(name = "card_name")
+    private String cardName;
 }

@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-black fixed-top" id="nav-main">
         <div class="container px-5 px-lg-5">
             <i class="navbar-brand fa-brands fa-java fa-spin "></i>
-            <a href="http://localhost:8080/" class="navbar-brand cool-navbrand">WFM</a>
+            <a href="http://localhost:8080/invoice/choose" class="navbar-brand cool-navbrand">WFM</a>
             <i class="navbar-brand fa-brands fa-java fa-spin "></i>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#rps-navbar">
                 <span class="fa fa-list" style="color:green"></span>
@@ -29,43 +29,24 @@
 </div>
 
 
+
 <div class="container pt-5 mt-5 mt-lg-5 align-items-center justify-content-center" id="registrationForm">
-    <div class="d-flex justify-content-center">
-        <div class="text-center px-5 py-5 my-5"
-             style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
-            <table id="dtHorizontalExample" class="table table-bordered table-md" cellspacing="3"
-                   width="100%">
-                <thead>
-                <tr class="text-white">
-                    <th scope="col">id</th>
-                    <th scope="col">Operation</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Reason</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Balance</th>
-                    <th scope="col" colspan="2">Actions</th>
-                </tr>
-                </thead>
-                <tbody style="cursor:pointer;">
-                <tr onclick="getTransactionID(this)" class="text-white" th:each="transaction: ${transactions}">
-                    <td th:text="${transaction.id}"></td>
-                    <td th:text="${transaction.operation}"></td>
-                    <td th:text="${transaction.amount}"></td>
-                    <td th:text="${transaction.reason}"></td>
-                    <td th:text="${transaction.date}"></td>
-                    <td th:text="${transaction.time}"></td>
-                    <td th:text="${transaction.balance}"></td>
-                    <td>
-                        <a th:href="@{/transaction/delete/{transactionId}(transactionId=${transaction.id})}" class="nav-link cool-link-mid fw-bold text-danger" style="text-decoration:none;">Delete</a>
-                    </td>
-                    <td>
-                        <a th:href="@{/transaction/get/{transactionId}(transactionId=${transaction.id})}" class="nav-link cool-link-mid fw-bold text-success" style="text-decoration:none;">Details</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="d-flex mb-5 mt-5 justify-content-center" style="justify-content: center;">
+
+        <form th:action="@{/invoice/show-invoices-by-card-name}" method="post">
+                <div class="form-group">
+                    <select th:name="name" id="card" class="form-control text-center mt-lg-5">
+                        <option value="melli_invoices">ملی</option>
+                        <option value="saman_invoices">سامان</option>
+                        <option value="en_invoices">اتقصاد نوین</option>
+                        <option value="ansar_invoices">داداش</option>
+                    </select>
+
+                </div>
+            <div class="center-container mb-lg-5" style="justify-content: center;">
+                <button type="submit" class=" btn btn-primary mt-4 mb-lg-3">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
 

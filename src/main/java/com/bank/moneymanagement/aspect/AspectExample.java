@@ -22,17 +22,17 @@ public class AspectExample {
 
     @Before("wtf()")
     public void lol(JoinPoint joinPoint) {
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        String log = methodSignature.getMethod().getName();
-        try {
-            FileHandler fileHandler = new FileHandler("logfile.txt", true); // true for append mode
-            SimpleFormatter formatter = new SimpleFormatter();
-            fileHandler.setFormatter(formatter);
-            logger.addHandler(fileHandler);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        logger.warning(log);
+//        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+//        String log = methodSignature.getMethod().getName();
+//        try {
+//            FileHandler fileHandler = new FileHandler("logfile.txt", true); // true for append mode
+//            SimpleFormatter formatter = new SimpleFormatter();
+//            fileHandler.setFormatter(formatter);
+//            logger.addHandler(fileHandler);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        logger.warning(log);
     }
 
 }
