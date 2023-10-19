@@ -1,6 +1,6 @@
 package com.bank.moneymanagement.model;
 
-public enum Operation {
-    WITHDRAW,
+public enum TransactionType {
+    WITHDRAWAL,
     DEPOSIT
 }
