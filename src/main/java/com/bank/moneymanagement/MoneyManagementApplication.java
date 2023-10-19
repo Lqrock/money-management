@@ -2,8 +2,11 @@ package com.bank.moneymanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.bank.moneymanagement")
 public class MoneyManagementApplication {
 
     public static void main(String[] args) {

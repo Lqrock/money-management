@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-black fixed-top" id="nav-main">
         <div class="container px-5 px-lg-5">
             <i class="navbar-brand fa-brands fa-java fa-spin "></i>
-            <a href="http://localhost:8080/invoice/choose" class="navbar-brand cool-navbrand">WFM</a>
+            <a href="http://localhost:8080/transaction/choose" class="navbar-brand cool-navbrand">WFM</a>
             <i class="navbar-brand fa-brands fa-java fa-spin "></i>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#rps-navbar">
                 <span class="fa fa-list" style="color:green"></span>
@@ -33,36 +33,33 @@
     <div class="d-flex justify-content-center">
         <div class="text-center px-5 py-5 my-5"
              style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
+            <h4 style="color:white;">current saman balance: </h4> <h4 class="mb-3" th:text="${currentBalance}" style="color:white;"></h4>
             <table id="dtHorizontalExample" class="table table-bordered table-md" cellspacing="3"
                    width="100%">
                 <thead>
                 <tr class="text-white">
                     <th scope="col">id</th>
+                    <th scope="col">transaction type</th>
+                    <th scope="col">description</th>
+                    <th scope="col">amount</th>
                     <th scope="col">bank name</th>
-                    <th scope="col">Operation</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Reason</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Balance</th>
+                    <th scope="col">date</th>
                     <th scope="col" colspan="2">Actions</th>
                 </tr>
                 </thead>
                 <tbody style="cursor:pointer;">
-                <tr onclick="getInvoiceID(this)" class="text-white" th:each="invoice: ${invoices}">
-                    <td th:text="${invoice.id}"></td>
-                    <td th:text="${invoice.cardName}"></td>
-                    <td th:text="${invoice.operation}"></td>
-                    <td th:text="${invoice.amount}"></td>
-                    <td th:text="${invoice.reason}"></td>
-                    <td th:text="${invoice.date}"></td>
-                    <td th:text="${invoice.time}"></td>
-                    <td th:text="${invoice.balance}"></td>
+                <tr onclick="getInvoiceID(this)" class="text-white" th:each="transaction: ${transactions}">
+                    <td th:text="${transaction.id}"></td>
+                    <td th:text="${transaction.transactionType}"></td>
+                    <td th:text="${transaction.description}"></td>
+                    <td th:text="${transaction.amount}"></td>
+                    <td th:text="${transaction.bankName}"></td>
+                    <td th:text="${transaction.date}"></td>
                     <td>
-                        <a th:href="@{/invoice/delete(id=${invoice.id}, cardName=${invoice.cardName})}" class="nav-link cool-link-mid fw-bold text-danger" style="text-decoration:none;">Delete</a>
+                        <a th:href="@{/transaction/delete/{id}(id=${transaction.id})}" class="nav-link cool-link-mid fw-bold text-danger" style="text-decoration:none;">Delete</a>
                     </td>
                     <td>
-                        <a th:href="@{/invoice/get(id=${invoice.id}, cardName=${invoice.cardName})}" class="nav-link cool-link-mid fw-bold text-success" style="text-decoration:none;">Details</a>
+                        <a th:href="@{/transaction/get/{id}(id=${transaction.id})}" class="nav-link cool-link-mid fw-bold text-success" style="text-decoration:none;">Details</a>
                     </td>
                 </tr>
                 </tbody>

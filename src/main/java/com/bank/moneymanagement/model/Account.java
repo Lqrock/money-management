@@ -1,9 +1,13 @@
 package com.bank.moneymanagement.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "account")
+@Data
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +21,13 @@ public class Account {
     @Column(name = "bank_name")
     private String bankName;
     @Column(name = "current_balance")
-    private Double currentBalance;
+    private Long currentBalance;
 
     public Account(){
 
     }
 
-    public Account(Long id, Long pan, String bankName, Double currentBalance) {
+    public Account(Long id, Long pan, String bankName, Long currentBalance) {
         this.id = id;
         this.pan = pan;
         this.bankName = bankName;
@@ -54,11 +58,11 @@ public class Account {
         this.bankName = bankName;
     }
 
-    public Double getCurrentBalance() {
+    public Long getCurrentBalance() {
         return currentBalance;
     }
 
-    public void setCurrentBalance(Double currentBalance) {
+    public void setCurrentBalance(Long currentBalance) {
         this.currentBalance = currentBalance;
     }
 }

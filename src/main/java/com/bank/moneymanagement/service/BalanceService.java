@@ -15,13 +15,13 @@ public class BalanceService {
     @Autowired
     AccountManager accountManager;
 
-    public void updateAccountBalance(String bankName, TransactionType transactionType, Double amount) throws InvalidBankNameException{
+    public void updateAccountBalance(String bankName, TransactionType transactionType, Long amount) throws InvalidBankNameException{
         Account account = accountManager.retrieveAccount(getBankIdBasedOnBankName(bankName));
         updateBalance(account, transactionType, amount);
         accountManager.saveAccount(account);
     }
 
-    private void updateBalance(Account account, TransactionType transactionType, Double amount) {
+    private void updateBalance(Account account, TransactionType transactionType, Long amount) {
         if (transactionType == TransactionType.WITHDRAWAL) {
             account.setCurrentBalance(account.getCurrentBalance() - amount);
         } else {
