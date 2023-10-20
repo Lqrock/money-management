@@ -3,14 +3,12 @@ package com.bank.moneymanagement.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-
 @Data
 @Entity
 @Table(name = "transactions")
 public class Transaction {
 
-    Transaction() {
+    public Transaction() {
     }
 
     @Id
@@ -31,9 +29,9 @@ public class Transaction {
     String bankName;
 
     @Column(name = "date")
-    Date date;
+    String date;
 
-    public Transaction(Long id, TransactionType transactionType, String description, Long amount, String bankName, Date date) {
+    public Transaction(Long id, TransactionType transactionType, String description, Long amount, String bankName, String date) {
         this.id = id;
         this.transactionType = transactionType;
         this.description = description;

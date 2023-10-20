@@ -15,7 +15,7 @@ public class BalanceService {
     @Autowired
     AccountManager accountManager;
 
-    public void updateAccountBalance(String bankName, TransactionType transactionType, Long amount) throws InvalidBankNameException{
+    public void updateAccountBalance(String bankName, TransactionType transactionType, Long amount){
         Account account = accountManager.retrieveAccount(getBankIdBasedOnBankName(bankName));
         updateBalance(account, transactionType, amount);
         accountManager.saveAccount(account);
@@ -29,13 +29,11 @@ public class BalanceService {
         }
     }
 
-    private Long getBankIdBasedOnBankName(String bankName) throws InvalidBankNameException{
-        if (bankName.equalsIgnoreCase("Melli")) {
+    private Long getBankIdBasedOnBankName(String bankName){
+        if (bankName.equalsIgnoreCase("melli")) {
             return MELLI_ID;
-        } else if (bankName.equalsIgnoreCase("Saman")){
-            return SAMAN_ID;
         } else {
-            throw new InvalidBankNameException("بانکی با این نام ثبت نشده است");
+            return SAMAN_ID;
         }
     }
 }

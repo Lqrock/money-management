@@ -16,7 +16,6 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/transaction")
 public class TransactionController {
-
     @Autowired
     TransactionService transactionService;
 
@@ -24,8 +23,16 @@ public class TransactionController {
     AccountService accountService;
 
     @PostMapping("/add")
-    public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) throws InvalidBankNameException {
-        return new ResponseEntity<>(transactionService.addTransaction(transaction), HttpStatus.OK);
+    public String addTransaction(@ModelAttribute("transaction") Transaction transaction, Model model) {
+        transactionService.addTransaction(transaction);
+        String bankName = transaction.getBankName();
+        return "redirect:/transaction/getall/" + bankName;
+    }
+
+    @RequestMapping("/show-form")
+    public String addTransaction(Model model) {
+        model.addAttribute("transaction", new Transaction());
+        return "add-transaction";
     }
 
     @GetMapping("/getall/{bankName}")

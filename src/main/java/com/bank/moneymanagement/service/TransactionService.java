@@ -6,6 +6,8 @@ import com.bank.moneymanagement.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +20,7 @@ public class TransactionService {
     @Autowired
     BalanceService balanceService;
 
-
-    public Transaction addTransaction(Transaction transaction) throws InvalidBankNameException {
+    public Transaction addTransaction(Transaction transaction) {
         balanceService.updateAccountBalance(transaction.getBankName(), transaction.getTransactionType(), transaction.getAmount());
         return transactionRepository.save(transaction);
     }

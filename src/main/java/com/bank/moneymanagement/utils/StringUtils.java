@@ -1,9 +1,6 @@
 package com.bank.moneymanagement.utils;
 
-import com.bank.moneymanagement.model.Transaction;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class StringUtils {
